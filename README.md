@@ -12,6 +12,36 @@ Ironhack Madrid - Data Analytics Part Time - Feb 2023 - Project Module 1
 
 In this project we need to generate a CSV file with the nearest BiciMAD Station to a Place of interest of Madrid. In __my project__, I need to show the nearest BiciMAD Station to the embassies located in Madrid.
 
+## **DDBB:**
+
+Information collected by 2 points:
+
+1. BBDD 
+con = duckdb.connect("../data/bicimad.db",read_only=True)
+df_bicis = con.sql("SELECT * FROM bicimad_stations").df()
+
+2. API
+endpoint = 'https://datos.madrid.es/egob'
+lourdes = '/catalogo/201000-0-embajadas-consulados.json'
+response = requests.get(endpoint + lourdes)
+
+## **Technology stack:**
+
+Languaje: Python
+
+Tools: Jupyter Notebook and Visual Studio Code
+
+Imports: 
+import geopandas
+import duckdb
+import pandas as pd
+import requests
+import json
+import re
+from shapely.geometry import Point
+import argpars
+
+
 **The project must meet the following requirements:**
 
 - It must be contained in a GitHub repository which includes a README file that explains the aim and content of your code. You may follow the structure suggested [here](https://github.com/potacho/data-project-template).
